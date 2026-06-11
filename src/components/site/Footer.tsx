@@ -11,10 +11,7 @@ export function Footer() {
           </p>
         </div>
 
-          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            Sell anything, find anything. The friendly marketplace for your neighborhood.
-          </p>
-        </div>
+
         {[
           { title: "Marketplace", items: ["Browse all", "Featured", "Nearby", "New today"] },
           { title: "Sell", items: ["Post a listing", "Boost", "Premium seller", "Seller guide"] },
