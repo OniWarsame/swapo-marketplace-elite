@@ -1,14 +1,16 @@
+import { Logo } from "./Logo";
+
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-border bg-cream">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-2xl bg-primary text-primary-foreground">
-              <span className="font-display text-lg font-black">S</span>
-            </span>
-            <span className="font-display text-2xl font-black">Swapo</span>
-          </div>
+          <Logo />
+          <p className="mt-4 max-w-xs text-sm text-muted-foreground">
+            Sell anything, find anything. The friendly marketplace for your neighborhood.
+          </p>
+        </div>
+
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Sell anything, find anything. The friendly marketplace for your neighborhood.
           </p>

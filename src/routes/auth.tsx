@@ -89,15 +89,15 @@ function AuthPage() {
   );
 }
 
-function Field({ icon, ...rest }: { icon: React.ReactNode } & React.InputHTMLAttributes<HTMLInputElement> & { onChange: (v: string) => void; value: string }) {
-  const { onChange, ...input } = rest as any;
+function Field({ icon, value, onChange, ...rest }: { icon: React.ReactNode; value: string; onChange: (v: string) => void; placeholder?: string; type?: string; required?: boolean }) {
   return (
     <label className="flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3 focus-within:ring-2 focus-within:ring-primary/40">
       <span className="text-muted-foreground">{icon}</span>
-      <input {...input} onChange={(e) => onChange(e.target.value)} className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground" />
+      <input {...rest} value={value} onChange={(e) => onChange(e.target.value)} className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground" />
     </label>
   );
 }
+
 
 function RoleCard({ active, icon, title, desc, onClick, compact }: { active: boolean; icon: React.ReactNode; title: string; desc: string; onClick: () => void; compact?: boolean }) {
   return (

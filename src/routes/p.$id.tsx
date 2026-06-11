@@ -3,8 +3,8 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ProductCard } from "@/components/site/ProductCard";
 import { getProduct, products } from "@/lib/mock-data";
-import { Heart, MapPin, Shield, Share2, Flag, Star, MessageCircle, Tag } from "lucide-react";
-import { useState } from "react";
+import { useCurrency } from "@/lib/currency";
+import { Heart, MapPin, Shield, Share2, Flag, Star, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/p/$id")({
   loader: ({ params }) => {
@@ -27,11 +27,8 @@ export const Route = createFileRoute("/p/$id")({
 
 function Detail() {
   const p = Route.useLoaderData();
-  const [offer, setOffer] = useState<number | "">("");
-  const [sent, setSent] = useState(false);
+  const { format } = useCurrency();
   const similar = products.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
-
-  const sendOffer = (e: React.FormEvent) => { e.preventDefault(); setSent(true); };
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,55 +57,32 @@ function Detail() {
           <div>
             <div className="flex flex-wrap gap-2">
               <span className="chip">{p.condition}</span>
-              {p.negotiable && <span className="chip !bg-mint">💬 Negotiable</span>}
+              {p.negotiable && <span className="chip !bg-mint">💬 Negotiable in chat</span>}
               {p.featured && <span className="chip !bg-sun">★ Featured</span>}
             </div>
             <h1 className="mt-4 font-display text-3xl font-black leading-tight sm:text-4xl">{p.title}</h1>
             <div className="mt-4 flex items-baseline gap-3">
-              <span className="price-tag text-5xl text-primary">${p.price}</span>
-              {p.originalPrice && <span className="text-lg text-muted-foreground line-through">${p.originalPrice}</span>}
+              <span className="price-tag text-5xl text-primary">{format(p.price)}</span>
+              {p.originalPrice && <span className="text-lg text-muted-foreground line-through">{format(p.originalPrice)}</span>}
             </div>
             <div className="mt-4 flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><MapPin className="h-4 w-4" /> {p.location} · {p.distanceKm} km</span>
               <span>Posted 2h ago</span>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto]">
               <Link to="/messages" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground hover:brightness-110">
-                <MessageCircle className="h-4 w-4" /> Message seller
+                <MessageCircle className="h-4 w-4" /> Chat with {p.seller.name.split(" ")[0]} {p.negotiable && "& negotiate"}
               </Link>
               <button className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 font-semibold hover:bg-secondary">
                 <Heart className="h-4 w-4" /> Save
               </button>
             </div>
 
-            {/* Make offer */}
             {p.negotiable && (
-              <form onSubmit={sendOffer} className="mt-4 rounded-3xl border border-border bg-card p-5">
-                <div className="flex items-center gap-2 text-sm font-bold"><Tag className="h-4 w-4 text-primary" /> Make an offer</div>
-                {sent ? (
-                  <div className="mt-3 rounded-2xl bg-mint/40 p-4 text-sm font-semibold text-ink">
-                    ✓ Offer of ${offer} sent. We'll notify you when {p.seller.name.split(" ")[0]} responds.
-                  </div>
-                ) : (
-                  <div className="mt-3 flex gap-2">
-                    <div className="relative flex-1">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 font-display font-bold text-muted-foreground">$</span>
-                      <input
-                        required type="number" value={offer} onChange={(e)=>setOffer(e.target.value ? +e.target.value : "")}
-                        placeholder={String(Math.round(p.price * 0.85))}
-                        className="w-full rounded-full border border-border bg-background py-3 pl-9 pr-4 font-semibold outline-none focus:ring-2 focus:ring-primary/40"
-                      />
-                    </div>
-                    <button className="rounded-full bg-ink px-6 py-3 font-semibold text-background hover:opacity-90">Send</button>
-                  </div>
-                )}
-                <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
-                  {[0.7, 0.8, 0.9].map(m => (
-                    <button key={m} type="button" onClick={()=>setOffer(Math.round(p.price*m))} className="chip">${Math.round(p.price*m)}</button>
-                  ))}
-                </div>
-              </form>
+              <div className="mt-3 rounded-2xl border border-dashed border-border bg-card/60 p-4 text-sm text-muted-foreground">
+                💡 This seller is open to offers. Start a chat to propose a price and agree on the details directly.
+              </div>
             )}
 
             {/* Seller card */}
