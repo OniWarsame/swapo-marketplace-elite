@@ -5,6 +5,8 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { categories, products } from "@/lib/mock-data";
 import { useState, useMemo } from "react";
 import { SlidersHorizontal, MapPin } from "lucide-react";
+import { useCurrency } from "@/lib/currency";
+
 
 type Search = { q?: string; category?: string };
 
@@ -19,6 +21,8 @@ export const Route = createFileRoute("/browse")({
 
 function Browse() {
   const { q, category } = Route.useSearch();
+  const { format } = useCurrency();
+
   const [cat, setCat] = useState(category ?? "all");
   const [cond, setCond] = useState<string>("any");
   const [price, setPrice] = useState(1000);
@@ -73,7 +77,7 @@ function Browse() {
 
             <div>
               <div className="mb-3 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                <span>Max price</span><span className="text-ink">${price}</span>
+                <span>Max price</span><span className="text-ink">{format(price)}</span>
               </div>
               <input type="range" min={20} max={1000} value={price} onChange={(e) => setPrice(+e.target.value)} className="w-full accent-primary" />
             </div>
