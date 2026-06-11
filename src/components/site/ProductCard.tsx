@@ -2,10 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { Heart, MapPin } from "lucide-react";
 import type { Product } from "@/lib/mock-data";
 import { useState } from "react";
+import { useCurrency } from "@/lib/currency";
+
 
 export function ProductCard({ p }: { p: Product }) {
   const [fav, setFav] = useState(false);
+  const { format } = useCurrency();
   return (
+
     <Link
       to="/p/$id"
       params={{ id: p.id }}
@@ -33,10 +37,11 @@ export function ProductCard({ p }: { p: Product }) {
       </div>
       <div className="p-4">
         <div className="flex items-baseline justify-between gap-2">
-          <span className="price-tag text-xl text-ink">${p.price}</span>
+          <span className="price-tag text-xl text-ink">{format(p.price)}</span>
           {p.originalPrice && (
-            <span className="text-xs text-muted-foreground line-through">${p.originalPrice}</span>
+            <span className="text-xs text-muted-foreground line-through">{format(p.originalPrice)}</span>
           )}
+
         </div>
         <div className="mt-1 line-clamp-1 text-sm font-semibold text-ink">{p.title}</div>
         <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
