@@ -1,5 +1,5 @@
 import { Logo } from "./Logo";
-import { Instagram, Twitter, Globe } from "lucide-react";
+import { Globe, Send, AtSign } from "lucide-react";
 
 export function Footer() {
   return (
@@ -11,7 +11,7 @@ export function Footer() {
             A modern marketplace for swappers everywhere. Discover, negotiate, and exchange in your local currency.
           </p>
           <div className="mt-6 flex gap-2">
-            {[Instagram, Twitter, Globe].map((I, i) => (
+            {[Globe, Send, AtSign].map((I, i) => (
               <a key={i} href="#" className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground hover:border-primary hover:text-primary">
                 <I className="h-4 w-4" />
               </a>
