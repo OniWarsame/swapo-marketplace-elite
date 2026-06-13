@@ -1,3 +1,13 @@
+import "@fontsource/syne/500.css";
+import "@fontsource/syne/600.css";
+import "@fontsource/syne/700.css";
+import "@fontsource/syne/800.css";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/500.css";
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/plus-jakarta-sans/700.css";
+import "@fontsource/plus-jakarta-sans/800.css";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -46,18 +56,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Swapo — Sell anything. Find anything." },
-      { name: "description", content: "Swapo is the friendly second-hand marketplace for your neighborhood. Buy, sell, and swap with people nearby." },
-      { property: "og:title", content: "Swapo — Sell anything. Find anything." },
-      { property: "og:description", content: "The friendly second-hand marketplace for your neighborhood." },
+      { name: "theme-color", content: "#0a0a1a" },
+      { title: "Swapo — The marketplace for what's next" },
+      { name: "description", content: "Swapo is a modern marketplace to buy, sell and swap second-hand. Discover curated listings nearby in USD or KSh." },
+      { property: "og:title", content: "Swapo — The marketplace for what's next" },
+      { property: "og:description", content: "A modern marketplace for swappers everywhere." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -87,4 +95,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-
