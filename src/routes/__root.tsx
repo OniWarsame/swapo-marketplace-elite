@@ -57,7 +57,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a1a" },
+      { name: "theme-color", content: "#f5f0e0" },
       { title: "Swapo — The marketplace for what's next" },
       { name: "description", content: "Swapo is a modern marketplace to buy, sell and swap second-hand. Discover curated listings nearby in USD or KSh." },
       { property: "og:title", content: "Swapo — The marketplace for what's next" },

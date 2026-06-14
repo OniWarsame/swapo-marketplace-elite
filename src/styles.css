@@ -165,9 +165,9 @@
 }
 
 @utility glass {
-  background: rgba(20, 20, 50, 0.55);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(10, 42, 32, 0.08);
 }
 
 @utility headline-xl {
