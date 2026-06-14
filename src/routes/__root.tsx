@@ -1,12 +1,13 @@
-import "@fontsource/syne/500.css";
-import "@fontsource/syne/600.css";
-import "@fontsource/syne/700.css";
-import "@fontsource/syne/800.css";
-import "@fontsource/plus-jakarta-sans/400.css";
-import "@fontsource/plus-jakarta-sans/500.css";
-import "@fontsource/plus-jakarta-sans/600.css";
-import "@fontsource/plus-jakarta-sans/700.css";
-import "@fontsource/plus-jakarta-sans/800.css";
+import "@fontsource/outfit/400.css";
+import "@fontsource/outfit/500.css";
+import "@fontsource/outfit/600.css";
+import "@fontsource/outfit/700.css";
+import "@fontsource/outfit/800.css";
+import "@fontsource/outfit/900.css";
+import "@fontsource/figtree/400.css";
+import "@fontsource/figtree/500.css";
+import "@fontsource/figtree/600.css";
+import "@fontsource/figtree/700.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -56,7 +57,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a1a" },
+      { name: "theme-color", content: "#f5f0e0" },
       { title: "Swapo — The marketplace for what's next" },
       { name: "description", content: "Swapo is a modern marketplace to buy, sell and swap second-hand. Discover curated listings nearby in USD or KSh." },
       { property: "og:title", content: "Swapo — The marketplace for what's next" },

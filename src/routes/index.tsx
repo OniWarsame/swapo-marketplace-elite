@@ -242,8 +242,8 @@ function Home() {
           <div className="relative">
             <h3 className="headline-xl text-4xl text-white sm:text-6xl md:text-7xl">Your next great find is one swap away.</h3>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/browse" className="rounded-full bg-deep px-7 py-4 text-sm font-bold uppercase tracking-wider text-ink hover:brightness-110">Start browsing</Link>
-              <Link to="/auth" className="rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-wider text-deep hover:bg-white/90">Create account</Link>
+              <Link to="/browse" className="rounded-full bg-deep px-7 py-4 text-sm font-bold uppercase tracking-wider text-cream hover:brightness-110">Start browsing</Link>
+              <Link to="/auth" className="rounded-full bg-cream px-7 py-4 text-sm font-bold uppercase tracking-wider text-deep hover:brightness-95">Create account</Link>
             </div>
           </div>
         </div>

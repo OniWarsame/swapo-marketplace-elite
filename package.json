@@ -12,6 +12,8 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@fontsource/figtree": "^5.2.10",
+    "@fontsource/outfit": "^5.2.8",
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@fontsource/syne": "^5.2.7",
     "@hookform/resolvers": "^5.2.2",
